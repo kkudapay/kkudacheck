@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>사업자번호 검색</title>
+</head>
+<body style="text-align: center; margin-top: 100px;">
+  <h1>사업자번호 검색</h1>
+  <input type="text" id="bizInput" placeholder="사업자번호 입력" />
+  <button onclick="searchBiz()">검색</button>
+
+  <div id="result" style="margin-top: 30px;"></div>
+
+  <script>
+    async function searchBiz() {
+      const bizNumber = document.getElementById('bizInput').value.trim();
+      if (!bizNumber) return alert('사업자번호를 입력해주세요');
+
+      const response = await fetch(`https://script.google.com/a/macros/shareround.co.kr/s/AKfycbxM-6QTlrlNO_jYH8ii3kLAH1obhhU28i0YOjnzlaGMdmrkEI9UX9oCq0mwhrMa38b2/exec?bizNumber=${bizNumber}`);
+      const data = await response.json();
+
+      const resultDiv = document.getElementById('result');
+      if (data.error) {
+        resultDiv.innerHTML = `<p style="color:red;">${data.error}</p>`;
+      } else {
+        resultDiv.innerHTML = `
+          <p><strong>사업자번호:</strong> ${data.사업자번호}</p>
+          <p><strong>상호:</strong> ${data.상호}</p>
+          <p><strong>조회결과:</strong> ${data.조회결과}</p>
+          <p><strong>비고:</strong> ${data.비고}</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
