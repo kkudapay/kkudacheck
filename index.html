@@ -19,7 +19,7 @@
         return;
       }
 
-      const response = await fetch(`https://script.google.com/a/macros/shareround.co.kr/s/AKfycbxM-6QTlrlNO_jYH8ii3kLAH1obhhU28i0YOjnzlaGMdmrkEI9UX9oCq0mwhrMa38b2/exec?bizNumber=${bizNumber}`);
+      const response = await fetch(`https://script.google.com/macros/s/AKfycbwZusgaAHgXPR7HpiM4X_qWFssKelfCF6Zt8TBQoRMT78xPOl6bIz2tGn1z_uLVnib8/exec?bizNumber=${bizNumber}`);
       const data = await response.json();
 
       const resultDiv = document.getElementById('result');
