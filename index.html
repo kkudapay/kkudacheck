@@ -19,11 +19,13 @@
         return;
       }
 
+      // Google Apps Script 웹 앱 URL로 요청 보내기
       const response = await fetch(`https://script.google.com/macros/s/AKfycbyoS7x3jn2WcakyfXLKbgg5cQKSbEizEP7fODGOEoLMBeENn2elJBuVKUMndKzMkGLZ/exec?bizNumber=${bizNumber}`);
       const data = await response.json();
 
       const resultDiv = document.getElementById('result');
 
+      // 오류 발생 시
       if (data.error) {
         resultDiv.innerHTML = `
           <table border="1" style="margin: 0 auto; border-collapse: collapse;">
@@ -46,6 +48,7 @@
           </table>
         `;
       } else {
+        // 정상적으로 데이터가 반환되면 출력
         resultDiv.innerHTML = `
           <table border="1" style="margin: 0 auto; border-collapse: collapse;">
             <thead>
@@ -60,8 +63,8 @@
               <tr>
                 <td>${data.사업자번호}</td>
                 <td>${data.상호}</td>
-                <td style="color:green;">정상</td>
-                <td>-</td>
+                <td>${data.조회결과}</td>   <!-- 구글 시트의 조회결과 -->
+                <td>${data.비고}</td>       <!-- 구글 시트의 비고 -->
               </tr>
             </tbody>
           </table>
