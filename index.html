@@ -19,8 +19,8 @@
     }
 
     .logo {
-      height: 60px;
-      margin-bottom: 20px;
+      height: 120px;
+      margin-bottom: 30px;
     }
 
     input[type="text"] {
@@ -74,7 +74,7 @@
       }
 
       .logo {
-        height: 100px;
+        height: 50px;
       }
     }
   </style>
@@ -83,7 +83,7 @@
   <div class="container">
     <img src="https://contents.sixshop.com/uploadedFiles/90423/product/image_1746690528809.png" class="logo" alt="로고" />
     <form onsubmit="searchBiz(); return false;">
-      <input type="text" id="bizInput" placeholder="사업자번호 입력" />
+      <input type="text" id="bizInput" placeholder="사업자번호를 입력해주세요." />
     </form>
   </div>
 
@@ -109,7 +109,7 @@
         return;
       }
 
-      resultBody.innerHTML = `<tr><td colspan="4" class="loading">조회 중입니다...</td></tr>`;
+      resultBody.innerHTML = `<tr><td colspan="4" class="loading">조회 중...⏳</td></tr>`;
 
       try {
         const response = await fetch(`https://script.google.com/macros/s/AKfycbyoS7x3jn2WcakyfXLKbgg5cQKSbEizEP7fODGOEoLMBeENn2elJBuVKUMndKzMkGLZ/exec?bizNumber=${bizNumber}`);
@@ -137,7 +137,7 @@
       } catch (err) {
         resultBody.innerHTML = `
           <tr>
-            <td colspan="4" class="fail">서버 오류가 발생했습니다</td>
+            <td colspan="4" class="fail">서버에 오류가 발생했어요.</td>
           </tr>
         `;
       }
