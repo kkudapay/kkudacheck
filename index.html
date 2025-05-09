@@ -116,14 +116,14 @@
       const resultBody = document.getElementById('resultBody');
 
       if (!bizNumber) {
-        alert('사업자번호를 입력해주세요');
+        alert('사업자번호를 입력해주세요!');
         return;
       }
 
       resultBody.innerHTML = `<tr><td colspan="4" class="loading">조회 중...⏳</td></tr>`;
 
       try {
-        const response = await fetch(`https://script.google.com/macros/s/AKfycbyoS7x3jn2WcakyfXLKbgg5cQKSbEizEP7fODGOEoLMBeENn2elJBuVKUMndKzMkGLZ/exec?bizNumber=${bizNumber}`);
+        const response = await fetch(`https://script.google.com/macros/s/AKfycbxUt7n4UaTNo57fCdaE-3XJnsSfahHYvsM3sNiT_vrsUHZN2Ea1dXIgKpFfQR_2TI-T/exec?bizNumber=${bizNumber}`);
         const data = await response.json();
 
         if (data.error) {
@@ -131,7 +131,7 @@
             <tr>
               <td>${bizNumber}</td>
               <td>-</td>
-              <td class="fail">실패</td>
+              <td class="fail">❌</td>
               <td>${data.error}</td>
             </tr>
           `;
@@ -148,7 +148,7 @@
       } catch (err) {
         resultBody.innerHTML = `
           <tr>
-            <td colspan="4" class="fail">서버에 오류가 발생했어요.</td>
+            <td colspan="4" class="fail">서버에 오류가 발생했어요!</td>
           </tr>
         `;
       }
